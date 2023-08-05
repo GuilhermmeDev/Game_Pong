@@ -130,11 +130,11 @@ function funcionaPlacar() {
   fill(255);
   text(pntsOP,350,50);
   text(pnts,150,50);
-  if (xBolinha + raio > width) {
+  if (xBolinha + raio >= width) {
     pnts += 1;
     pontoSom.play();
   }
-  if (xBolinha - raio < 0) {
+  if (xBolinha - raio <= 0) {
     pntsOP += 1;
     pontoSom.play();
   }
@@ -142,6 +142,7 @@ function funcionaPlacar() {
 function bolinhaBug(){
   if(xBolinha - raio < 0 || xBolinha + raio > width) {
     xBolinha = 200
+    vehY *= -1
   }
 }
 
