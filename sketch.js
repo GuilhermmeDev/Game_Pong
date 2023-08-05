@@ -47,6 +47,7 @@ function draw() {
   movimentaOponente();
   funcionaPlacar();
   bolinhaBug();
+  limiteRaq();
   
   
   //verificaColisao();
@@ -83,6 +84,19 @@ function movimentaRaquete(){
     yRaq += 5;
   }
 }
+
+function limiteRaq() {
+  if (yRaq >= height-75) {
+    yRaq -= 5;
+  }
+  if (yRaq <= 0) {
+    yRaq += 5;
+  }
+  if (yRaqOP <= 0) {
+    yRaqOP -= vehYOP;
+  }
+}
+
 function verificaColisao() {
   if (xBolinha - raio < xRaq + wRaq && yBolinha - raio < yRaq + hRaq && yBolinha + raio > yRaq) {
     vehX *= -1
@@ -93,7 +107,7 @@ function colidiuBiblioteca(x,y){
   if (colide) {
     vehX *= -1;
     raqueteSom.play()
-    if (vehX >= 8 || vehX <= -8) {
+    if (vehX >= 9 || vehX <= -9) {
       vehX *= 0.8
     }
     else {
@@ -103,7 +117,7 @@ function colidiuBiblioteca(x,y){
 }
 
 function movimentaOponente(){
-  vehYOP = yBolinha - yRaqOP - wRaq /2 - 60
+  vehYOP = yBolinha - yRaqOP - wRaq /2 - 70
   yRaqOP += vehYOP
 }
 
@@ -127,7 +141,7 @@ function funcionaPlacar() {
 }
 function bolinhaBug(){
   if(xBolinha - raio < 0 || xBolinha + raio > width) {
-    xBolinha = 50
+    xBolinha = 200
   }
 }
 
